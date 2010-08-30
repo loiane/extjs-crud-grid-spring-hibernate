@@ -13,10 +13,6 @@ Ext.onReady(function(){
     }, {
         name: 'email',
         type: 'string'
-    }, {
-        name: 'birthday',
-        type: 'date',
-        dateFormat: 'm/d/Y'
     }]);
     
     var proxy = new Ext.data.HttpProxy({
@@ -40,7 +36,7 @@ Ext.onReady(function(){
  // The new DataWriter component.
     var writer = new Ext.data.JsonWriter({
         encode: true,
-        writeAllFields: false
+        writeAllFields: true
     });
     
  // Typical Store collecting the Proxy, Reader and Writer together.
@@ -83,7 +79,7 @@ Ext.onReady(function(){
                 allowBlank: false
             }},
             {header: "PHONE #",
-             width: 150,
+             width: 160,
              sortable: true,
              dataIndex: 'phone',
              editor: {
@@ -91,28 +87,19 @@ Ext.onReady(function(){
                  allowBlank: false
             }},
             {header: "EMAIL",
-             width: 150,
+             width: 170,
              sortable: true,
              dataIndex: 'email',
              editor: {
                 xtype: 'textfield',
                 allowBlank: false
-            }},
-            {header: "BIRTHDAY",
-             width: 100,
-             sortable: true,
-             dataIndex: 'birthday',
-             renderer: Ext.util.Format.dateRenderer('m/d/Y'),
-             editor: new Ext.form.DateField ({
-                allowBlank: false,
-                format: 'm/d/Y',
-                maxValue: (new Date())
-            })}
+            }}
         ],
+        viewConfig:{forcefit:true},
         plugins: [editor],
         title: 'My Contacts',
         height: 300,
-        width:610,
+        width:535,
 		frame:true,
 		tbar: [{
             iconCls: 'icon-user-add',
@@ -121,8 +108,7 @@ Ext.onReady(function(){
                 var e = new Contact({
                     name: 'New Guy',
                     phone: '(000) 000-0000',
-                    email: 'new@loianetest.com',
-                    birthday: '01/01/2000'
+                    email: 'new@loianetest.com'
                 });
                 editor.stopEditing();
                 store.insert(0, e);

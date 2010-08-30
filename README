@@ -1,13 +1,16 @@
 Example of a CRUD grid using ExtJS, Spring Framework 3 and Hibernate 3.5.
 
-Libs used in this project:
-Spring MVC 3
-Hibernate 3.5
-JSON lib
-ExtJS 3.2.1 - including RowEditor Plugin
+All libs included.
 
-Download this example and run it in a java app server. (I used TomCat 7.0)
+First of all execute the MySQL scrip: sql/script.sql
+
+I used Eclipse Helios and Tomcat 7.0 to develop this app. 
+This project is in Eclipse dynamic web project format.
+
+Download this example and run it in a java app server.
 http://localhost:8080/extjs-crud-grid-spring-hibernate/
+
+GPL 3.0 license included.
 
 For more examples and tutorials:
 http://loianegroner.com (English)

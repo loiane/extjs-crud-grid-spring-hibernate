@@ -12,7 +12,7 @@ import com.loiane.model.Contact;
 import com.loiane.util.Util;
 
 /**
- * Contact Business Delegate
+ * Contact Service
  * 
  * @author Loiane Groner
  * http://loianegroner.com (English)
@@ -39,14 +39,14 @@ public class ContactService {
 	 * @return created contacts
 	 * @throws ParseException 
 	 */
-	public List<Contact> create(Object data) throws ParseException{
+	public List<Contact> create(Object data){
 		
         List<Contact> newContacts = new ArrayList<Contact>();
 		
 		List<Contact> list = util.getContactsFromRequest(data);
 		
 		for (Contact contact : list){
-			newContacts.add(contactDAO.addContact(contact));
+			newContacts.add(contactDAO.saveContact(contact));
 		}
 		
 		return newContacts;
@@ -59,14 +59,14 @@ public class ContactService {
 	 * @return updated contacts
 	 * @throws ParseException 
 	 */
-	public List<Contact> update(Object data) throws ParseException{
+	public List<Contact> update(Object data){
 		
 		List<Contact> returnContacts = new ArrayList<Contact>();
 		
 		List<Contact> updatedContacts = util.getContactsFromRequest(data);
 		
 		for (Contact contact : updatedContacts){
-			returnContacts.add(contactDAO.updateContact(contact));
+			returnContacts.add(contactDAO.saveContact(contact));
 		}
 		
 		return returnContacts;

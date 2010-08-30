@@ -36,7 +36,7 @@ public class ContactController  {
 
 		} catch (Exception e) {
 
-			return getMap(null);
+			return getModelMapError("Error retrieving Contacts from database.");
 		}
 	}
 	
