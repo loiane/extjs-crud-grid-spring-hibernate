@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.loiane.dao.ContactDAO;
 import com.loiane.model.Contact;
@@ -28,6 +29,7 @@ public class ContactService {
 	 * Get all contacts
 	 * @return
 	 */
+	@Transactional(readOnly=true)
 	public List<Contact> getContactList(){
 
 		return contactDAO.getContacts();
@@ -37,8 +39,8 @@ public class ContactService {
 	 * Create new Contact/Contacts
 	 * @param data - json data from request
 	 * @return created contacts
-	 * @throws ParseException 
 	 */
+	@Transactional
 	public List<Contact> create(Object data){
 		
         List<Contact> newContacts = new ArrayList<Contact>();
@@ -57,8 +59,8 @@ public class ContactService {
 	 * Update contact/contacts
 	 * @param data - json data from request
 	 * @return updated contacts
-	 * @throws ParseException 
 	 */
+	@Transactional
 	public List<Contact> update(Object data){
 		
 		List<Contact> returnContacts = new ArrayList<Contact>();
@@ -76,6 +78,7 @@ public class ContactService {
 	 * Delete contact/contacts
 	 * @param data - json data from request
 	 */
+	@Transactional
 	public void delete(Object data){
 		
 		//it is an array - have to cast to array object
